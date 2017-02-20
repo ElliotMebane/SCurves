@@ -1,9 +1,7 @@
 # S-Curves
 S-Curves implemented in Processing
 
-![img](Curves.png)
-
-![img](Curves2.png)
+![img](Curves_2017_2_20_14_5_12.png)
 
 <a href="https://youtu.be/0oBYrB-xB6Q" target="_blank">YouTube Video</a>
 
@@ -22,6 +20,8 @@ b) curve passes through (a,a) with endpoint slope influence
 c) curve passes through (a,b) with endpoint slope influence. This is the most responsive curve with the mouse-point intersection requested in the thread.
 
 d) simple curve through (0.5, 0.5) with endpoint slope influence
+
+e) bezier curve with handle positioning proportional to (a,b) ratio
 
 Keyboard Input
 

@@ -14,7 +14,16 @@ color color2;
 color color2b;
 color color3;
 color color3b;
+color color4;
+color color4b;
 color colorGrey;
+
+float cp1x = 0;
+float cp1y = 0;
+float cp2x = 0;
+float cp2y = 0;
+
+float lineWidth = 4;
 
 void setup() 
 {
@@ -25,7 +34,7 @@ void setup()
   cursor(CROSS);
   colorMode(HSB);
   strokeWeight(2);
-
+  
   color0 = color(0, 255, 255);
   color0b = color(0, 255, 175);
   color1 = color(30, 255, 255);
@@ -35,6 +44,8 @@ void setup()
   color3 = color(160, 255, 255);
   color3b = color(160, 255, 200);
   colorGrey = color(0, 0, 100);
+  color4 = color(210, 255, 255);
+  color4b = color(210, 255, 225);
 }
 
 void draw() 
@@ -71,6 +82,12 @@ void draw()
     noCursor();
   }
   
+  // bezier points for section e
+  cp1x = width - 400 * e * (1-a); // control point 1, x
+  cp1y = 75 * s * (1-b);
+  cp2x = 400 * e * a;
+  cp2y = height - 75 * s * b;
+    
   for( int tX = 0; tX < width; tX++ )
   {
     x = tX/(float)width;
@@ -125,6 +142,8 @@ void draw()
 
     // draw curves
    
+    strokeWeight( lineWidth );
+     
     //a
     stroke(color0);
     plotPoint( pointX, pointY );
@@ -140,6 +159,12 @@ void draw()
     //d
     stroke(color3);
     plotPoint( pointX, pointY4 );
+    
+    //e, bezier
+    stroke( color4 );
+    float tPointX = bezierPoint(width, cp1x, cp2x, 0, x);
+    float tPointY = bezierPoint(0, cp1y, cp2y, height, x);
+    plotPoint( tPointX, height - tPointY ); // invert the Y to conform with other line drawing types
   } 
 }
 
@@ -184,19 +209,31 @@ void plotPoint( float pX, float pY )
   point( 0.1 * width + 0.8 * pX, height - (0.1 * height + 0.8 * pY) );
 }
 
+float chartSpaceX( float pX )
+{
+  return ( 0.1 * width ) + ( 0.8 * pX );
+}
+
+float chartSpaceY( float pY )
+{
+  return ( 0.1 * height ) + ( 0.8 * pY );
+}
+
 void showChartExtras( float tA, float tB )
 {
   if( showExtras )
   {
     textFont( f, 20 );                  
-    fill(175);                          
+    fill(175); 
     String tDisplay = "Inflection Point Slope: " + e + 
     "\nEnd Point Slope: " + s + 
     "\nMouse Coords: " + tA + ", " + tB;
     text( tDisplay, 10, 25 );   
     
-    stroke( colorGrey );
+    strokeWeight( max( 1, lineWidth - 1 ) );
     noFill();
+    
+    stroke( colorGrey );
     rect( 0.1 * width, 
        (0.1 * height),
        (width * 0.8),
@@ -207,25 +244,30 @@ void showChartExtras( float tA, float tB )
        0.1 * height );
        
     stroke( color2b );
-    noFill();
+    //noFill();
     rect( 0.1 * width, 
        (0.1 * height) + tB * (height * 0.8),
        (width * 0.8) * tA,
        (height * 0.8) - tB * (height * 0.8) );
        
     stroke( color3b );
-    noFill();
+    //noFill();
     rect( 0.1 * width, 
        (0.1 * height) + 0.5 * (height * 0.8),
        (width * 0.8) * 0.5,
        (height * 0.8) - 0.5 * (height * 0.8) );
        
     stroke( color0b );
-    noFill();
+    //noFill();
     rect( 0.1 * width, 
        (0.1 * height) + (height * 0.8) - ( tA * (height * 0.8) ),
        (width * 0.8) * tA,
        (height * 0.8) * tA );
+       
+    stroke( color4b );
+    //noFill();
+    line( chartSpaceX(cp1x), chartSpaceY(cp1y), chartSpaceX(width), chartSpaceY(1) );
+    line( chartSpaceX(cp2x), chartSpaceY(cp2y), chartSpaceX(0), chartSpaceY(height) );
   }
 }
 
