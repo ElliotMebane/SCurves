@@ -1,7 +1,7 @@
 # S-Curves
 S-Curves implemented in Processing
 
-![img](Curves_2017_2_20_14_5_12.png)
+![img](Curves_2017_2_20_14_27_41.png)
 
 <a href="https://youtu.be/0oBYrB-xB6Q" target="_blank">YouTube Video</a>
 
