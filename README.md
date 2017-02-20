@@ -5,6 +5,8 @@ S-Curves implemented in Processing
 
 ![img](Curves2.png)
 
+[![YouTube Video](https://youtu.be/0oBYrB-xB6Q)](https://youtu.be/0oBYrB-xB6Q)
+
 Based on the S-Curves described in Luminous Landscape forum, here: 
 
 http://forum.luminous-landscape.com/index.php?topic=52364.0
