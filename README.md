@@ -5,11 +5,11 @@ S-Curves implemented in Processing
 
 ![img](Curves2.png)
 
-[![YouTube Video](https://youtu.be/0oBYrB-xB6Q)](https://youtu.be/0oBYrB-xB6Q)
+<a href="https://youtu.be/0oBYrB-xB6Q" target="_blank">YouTube Video</a>
 
 Based on the S-Curves described in Luminous Landscape forum, here: 
 
-http://forum.luminous-landscape.com/index.php?topic=52364.0
+<a href="http://forum.luminous-landscape.com/index.php?topic=52364.0" target="_blank">Luminous Landscape Forum Thread</a>
 
 A user wanted a parametric S-Curve passing through specified coordinates. 
 
