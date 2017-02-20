@@ -71,6 +71,12 @@ void draw()
   float fn = 0;
   float tE = e * tInputY;
   
+  // bezier points for section e
+  cp1x = width - 400 * e * (1-a); // control point 1, x
+  cp1y = 75 * s * (1-b);
+  cp2x = 400 * e * a;
+  cp2y = height - 75 * s * b;
+  
   showChartExtras(tInputX, tInputY);
   
   if( showCursor )
@@ -81,12 +87,6 @@ void draw()
   {
     noCursor();
   }
-  
-  // bezier points for section e
-  cp1x = width - 400 * e * (1-a); // control point 1, x
-  cp1y = 75 * s * (1-b);
-  cp2x = 400 * e * a;
-  cp2y = height - 75 * s * b;
     
   for( int tX = 0; tX < width; tX++ )
   {
